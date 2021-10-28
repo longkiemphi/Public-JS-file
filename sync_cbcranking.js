@@ -11,13 +11,13 @@ console.error = (function() {
     }
 })();
 
-setTimeout(async() => {
-    function dynamicallyLoadScript(url) {
-        var script = document.createElement("script"); // create a script DOM node
-        script.src = url; // set its src to the provided URL
+function dynamicallyLoadScript(url) {
+    var script = document.createElement("script"); // create a script DOM node
+    script.src = url; // set its src to the provided URL
 
-        document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
-    }
+    document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+}
+setTimeout(async() => {
 
     // import Ajax
     await dynamicallyLoadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
@@ -28,22 +28,6 @@ setTimeout(async() => {
 
     getCBCRanking();
 }, 500)
-
-function dynamicallyLoadScript(url) {
-    var script = document.createElement("script"); // create a script DOM node
-    script.src = url; // set its src to the provided URL
-
-    document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
-}
-
-// import Ajax
-dynamicallyLoadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
-    //import convert excel lib
-dynamicallyLoadScript("//unpkg.com/xlsx/dist/xlsx.full.min.js")
-
-// ... give time for script to load, then type (or see below for non wait option)
-jQuery.noConflict();
-
 
 
 function getCBCRanking() {
@@ -69,10 +53,7 @@ function getCBCRanking() {
 }
 
 
-
-
 function convertJSONToExcel(data) {
-
 
     var createXLSLFormatObj = [];
 
