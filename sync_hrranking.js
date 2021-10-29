@@ -35,7 +35,7 @@ function getCBCRanking() {
     $.ajax({
         url: "https://api.uprace.vn/api/event/rank/list",
         type: 'POST',
-        data: JSON.stringify({ "trid": "9fe7c7ef-1f67-4439-bbf7-c7d2995828bf", "trtm": 1635489465, "data": { "size": 100, "uid": 191607, "evid": "5", "type": 5, "value": 143, "from": 0 } }),
+        data: JSON.stringify({ "trid": "2de52882-4444-462b-af34-8f863131f7e8", "trtm": 1635343208, "data": { "size": 100, "uid": 191607, "evid": "5", "type": 5, "value": 132, "from": 0 } }),
         headers: {
             "Content-type": "application/json;charset=UTF-8",
             'authorization': 'Bearer ' + JSON.parse(localStorage.curentUser).accesstoken
@@ -76,7 +76,7 @@ function convertJSONToExcel(data) {
 
 
     /* File Name */
-    var filename = "HR_Ranking.xlsx";
+    var filename = "CBC_Ranking.xlsx";
 
     /* Sheet Name */
     var ws_name = "Ranking";
