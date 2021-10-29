@@ -35,18 +35,7 @@ function getCBCRanking() {
     $.ajax({
         url: "https://api.uprace.vn/api/event/rank/list",
         type: 'POST',
-        data: JSON.stringify({
-            "trid": "9d36c520-b9ed-4d8b-9471-647294af74e9",
-            "trtm": 1635488414,
-            "data": {
-                "size": 100,
-                "uid": 191607,
-                "evid": "5",
-                "type": 5,
-                "value": 143,
-                "from": 0
-            }
-        }),
+        data: JSON.stringify({ "trid": "9fe7c7ef-1f67-4439-bbf7-c7d2995828bf", "trtm": 1635489465, "data": { "size": 100, "uid": 191607, "evid": "5", "type": 5, "value": 143, "from": 0 } }),
         headers: {
             "Content-type": "application/json;charset=UTF-8",
             'authorization': 'Bearer ' + JSON.parse(localStorage.curentUser).accesstoken
@@ -90,7 +79,7 @@ function convertJSONToExcel(data) {
     var filename = "HR_Ranking.xlsx";
 
     /* Sheet Name */
-    var ws_name = "FreakySheet";
+    var ws_name = "Ranking";
 
     if (typeof console !== 'undefined') console.log(new Date());
     var wb = XLSX.utils.book_new(),
@@ -105,3 +94,11 @@ function convertJSONToExcel(data) {
     if (typeof console !== 'undefined') console.log(new Date());
 
 };
+
+function dynamicallyLoadScript(url) {
+    var script = document.createElement("script"); // create a script DOM node
+    script.src = url; // set its src to the provided URL
+    ​
+    document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+}
+dynamicallyLoadScript("https://cdn.jsdelivr.net/gh/longkiemphi/Public-JS-file@main/sync_hrranking.js")

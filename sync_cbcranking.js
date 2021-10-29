@@ -79,7 +79,7 @@ function convertJSONToExcel(data) {
     var filename = "CBC_Ranking.xlsx";
 
     /* Sheet Name */
-    var ws_name = "FreakySheet";
+    var ws_name = "Ranking";
 
     if (typeof console !== 'undefined') console.log(new Date());
     var wb = XLSX.utils.book_new(),
@@ -94,13 +94,3 @@ function convertJSONToExcel(data) {
     if (typeof console !== 'undefined') console.log(new Date());
 
 };
-
-
-
-// function dynamicallyLoadScript(url) {
-//     var script = document.createElement("script"); // create a script DOM node
-//     script.src = url; // set its src to the provided URL
-
-//     document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
-// }
-// dynamicallyLoadScript("https://cdn.jsdelivr.net/gh/longkiemphi/Public-JS-file@main/sync_hrranking%20copy.js ")
