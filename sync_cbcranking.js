@@ -24,9 +24,9 @@ setTimeout(async() => {
         //import convert excel lib
     await dynamicallyLoadScript("//unpkg.com/xlsx/dist/xlsx.full.min.js")
         // ... give time for script to load, then type (or see below for non wait option)
-    jQuery.noConflict();
+    await jQuery.noConflict();
 
-    getCBCRanking();
+    await getCBCRanking();
 }, 500)
 
 

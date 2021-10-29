@@ -24,9 +24,9 @@ setTimeout(async() => {
         //import convert excel lib
     await dynamicallyLoadScript("//unpkg.com/xlsx/dist/xlsx.full.min.js")
         // ... give time for script to load, then type (or see below for non wait option)
-    jQuery.noConflict();
+    await jQuery.noConflict();
 
-    getCBCRanking();
+    await getCBCRanking();
 }, 500)
 
 
@@ -94,11 +94,3 @@ function convertJSONToExcel(data) {
     if (typeof console !== 'undefined') console.log(new Date());
 
 };
-
-// function dynamicallyLoadScript(url) {
-//     var script = document.createElement("script"); // create a script DOM node
-//     script.src = url; // set its src to the provided URL
-//     ​
-//     document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
-// }
-// dynamicallyLoadScript("https://cdn.jsdelivr.net/gh/longkiemphi/Public-JS-file@main/sync_hrranking.js")
