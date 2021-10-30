@@ -83,3 +83,24 @@ function convertJSONToExcel(data, teamName) {
     if (typeof console !== 'undefined') console.log(new Date());
 
 };
+
+// function dynamicallyLoadScript(url) {
+//     var script = document.createElement("script"); // create a script DOM node
+//     script.src = url; // set its src to the provided URL
+
+//     document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+// }
+// dynamicallyLoadScript("https://cdn.jsdelivr.net/gh/longkiemphi/Public-JS-file@main/syncRanking.js")
+
+// var teamInfo={ "trid": "2de52882-4444-462b-af34-8f863131f7e8", "trtm": 1635343208, "data": { "size": 100, "uid": 191607, "evid": "5", "type": 5, "value": 132, "from": 0 } }
+// var teamName = "CBC"
+
+// function onLoading() {
+//     if (window.XLSX) {
+//         getRanking(teamInfo, teamName );
+//     } else {
+//         setTimeout(function() { onLoading() }, 50);
+//     }
+// }
+
+// onLoading()
