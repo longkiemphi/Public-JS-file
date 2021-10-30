@@ -11,41 +11,41 @@ console.error = (function() {
     }
 })();
 
+
+
+
+
 function dynamicallyLoadScript(url) {
     var script = document.createElement("script"); // create a script DOM node
     script.src = url; // set its src to the provided URL
 
     document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
 }
-setTimeout(async() => {
 
-    // import Ajax
-    await dynamicallyLoadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
-        //import convert excel lib
-    await dynamicallyLoadScript("//unpkg.com/xlsx/dist/xlsx.full.min.js")
-        // ... give time for script to load, then type (or see below for non wait option)
-    await jQuery.noConflict();
-
-    await getCBCRanking();
-}, 500)
+// import Ajax
+dynamicallyLoadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    //import convert excel lib
+dynamicallyLoadScript("//unpkg.com/xlsx/dist/xlsx.full.min.js")
+    // ... give time for script to load, then type (or see below for non wait option)
+jQuery.noConflict();
 
 
-function getCBCRanking() {
+function getRanking(teamData, teamName) {
 
     $.ajax({
         url: "https://api.uprace.vn/api/event/rank/list",
         type: 'POST',
-        data: JSON.stringify({ "trid": "2de52882-4444-462b-af34-8f863131f7e8", "trtm": 1635343208, "data": { "size": 100, "uid": 191607, "evid": "5", "type": 5, "value": 132, "from": 0 } }),
+        data: teamData,
         headers: {
             "Content-type": "application/json;charset=UTF-8",
             'authorization': 'Bearer ' + JSON.parse(localStorage.curentUser).accesstoken
         },
         success: function(response) {
             console.error(response.data.list);
-            convertJSONToExcel(response.data.list)
+            convertJSONToExcel(response.data.list, teamName)
         },
-        error: function() {
-            console.error(response.data.list);
+        error: function(err) {
+            console.error(err);
             console.error("error");
         }
     });
@@ -53,7 +53,7 @@ function getCBCRanking() {
 }
 
 
-function convertJSONToExcel(data) {
+function convertJSONToExcel(data, teamName) {
 
     var createXLSLFormatObj = [];
 
@@ -76,7 +76,7 @@ function convertJSONToExcel(data) {
 
 
     /* File Name */
-    var filename = "CBC_Ranking.xlsx";
+    var filename = teamName + "_Ranking.xlsx";
 
     /* Sheet Name */
     var ws_name = "Ranking";
@@ -94,3 +94,13 @@ function convertJSONToExcel(data) {
     if (typeof console !== 'undefined') console.log(new Date());
 
 };
+
+function onLoad() {
+    if (window.XLSX) {
+        getRanking();
+    } else {
+        setTimeout(function() { onLoad() }, 50);
+    }
+}
+
+onLoad()

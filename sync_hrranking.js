@@ -17,25 +17,33 @@ function dynamicallyLoadScript(url) {
 
     document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
 }
-setTimeout(async() => {
 
-    // import Ajax
-    await dynamicallyLoadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
-        //import convert excel lib
-    await dynamicallyLoadScript("//unpkg.com/xlsx/dist/xlsx.full.min.js")
-        // ... give time for script to load, then type (or see below for non wait option)
-    await jQuery.noConflict();
-
-    await getCBCRanking();
-}, 500)
+// import Ajax
+dynamicallyLoadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    //import convert excel lib
+dynamicallyLoadScript("//unpkg.com/xlsx/dist/xlsx.full.min.js")
+    // ... give time for script to load, then type (or see below for non wait option)
+jQuery.noConflict();
 
 
-function getCBCRanking() {
+
+
+function onLoad() {
+    if (window.XLSX) {
+        getRanking();
+    } else {
+        setTimeout(function() { onLoad() }, 50);
+    }
+}
+
+onLoad()
+
+function getRanking() {
 
     $.ajax({
         url: "https://api.uprace.vn/api/event/rank/list",
         type: 'POST',
-        data: JSON.stringify({ "trid": "2de52882-4444-462b-af34-8f863131f7e8", "trtm": 1635343208, "data": { "size": 100, "uid": 191607, "evid": "5", "type": 5, "value": 132, "from": 0 } }),
+        data: JSON.stringify({ "trid": "9fe7c7ef-1f67-4439-bbf7-c7d2995828bf", "trtm": 1635489465, "data": { "size": 100, "uid": 191607, "evid": "5", "type": 5, "value": 143, "from": 0 } }),
         headers: {
             "Content-type": "application/json;charset=UTF-8",
             'authorization': 'Bearer ' + JSON.parse(localStorage.curentUser).accesstoken
@@ -44,8 +52,8 @@ function getCBCRanking() {
             console.error(response.data.list);
             convertJSONToExcel(response.data.list)
         },
-        error: function() {
-            console.error(response.data.list);
+        error: function(err) {
+            console.error(err);
             console.error("error");
         }
     });
@@ -76,7 +84,7 @@ function convertJSONToExcel(data) {
 
 
     /* File Name */
-    var filename = "CBC_Ranking.xlsx";
+    var filename = "HR_Ranking.xlsx";
 
     /* Sheet Name */
     var ws_name = "Ranking";
