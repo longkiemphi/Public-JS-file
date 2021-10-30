@@ -11,17 +11,6 @@ console.error = (function() {
     }
 })();
 
-
-
-
-
-function dynamicallyLoadScript(url) {
-    var script = document.createElement("script"); // create a script DOM node
-    script.src = url; // set its src to the provided URL
-
-    document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
-}
-
 // import Ajax
 dynamicallyLoadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
     //import convert excel lib
@@ -30,12 +19,12 @@ dynamicallyLoadScript("//unpkg.com/xlsx/dist/xlsx.full.min.js")
 jQuery.noConflict();
 
 
-function getRanking(teamData, teamName) {
+function getRanking(teamInfo, teamName) {
 
     $.ajax({
         url: "https://api.uprace.vn/api/event/rank/list",
         type: 'POST',
-        data: teamData,
+        data: JSON.stringify(teamInfo),
         headers: {
             "Content-type": "application/json;charset=UTF-8",
             'authorization': 'Bearer ' + JSON.parse(localStorage.curentUser).accesstoken
@@ -95,12 +84,12 @@ function convertJSONToExcel(data, teamName) {
 
 };
 
-function onLoad() {
+function onLoading(teamInfo, teamName) {
     if (window.XLSX) {
-        getRanking();
+        getRanking(teamInfo, teamName);
     } else {
         setTimeout(function() { onLoad() }, 50);
     }
 }
 
-onLoad()
+onLoading(teamInfo, teamName)
