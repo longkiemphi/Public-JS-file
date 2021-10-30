@@ -83,13 +83,3 @@ function convertJSONToExcel(data, teamName) {
     if (typeof console !== 'undefined') console.log(new Date());
 
 };
-
-function onLoading(teamInfo, teamName) {
-    if (window.XLSX) {
-        getRanking(teamInfo, teamName);
-    } else {
-        setTimeout(function() { onLoad() }, 50);
-    }
-}
-
-onLoading(teamInfo, teamName)
