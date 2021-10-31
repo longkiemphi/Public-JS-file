@@ -85,23 +85,23 @@ function convertJSONToExcel(data, teamName) {
 };
 
 
-function dynamicallyLoadScript(url) {
-    var script = document.createElement("script"); // create a script DOM node
-    script.src = url; // set its src to the provided URL
+// function dynamicallyLoadScript(url) {
+//     var script = document.createElement("script"); // create a script DOM node
+//     script.src = url; // set its src to the provided URL
 
-    document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
-}
-dynamicallyLoadScript("https://cdn.jsdelivr.net/gh/longkiemphi/Public-JS-file@main/syncRanking.js")
+//     document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+// }
+// dynamicallyLoadScript("https://cdn.jsdelivr.net/gh/longkiemphi/Public-JS-file@main/syncVNGRanking.js")
 
-var teamInfo = { "trid": "4d370b18-7fcc-4e53-a334-5365367815e7", "trtm": 1635653045, "data": { "size": 100, "uid": 191607, "evid": "5", "type": 4, "value": "9", "from": 0 } }
-var teamName = "VNG"
+// var teamInfo = { "trid": "4d370b18-7fcc-4e53-a334-5365367815e7", "trtm": 1635653045, "data": { "size": 100, "uid": 191607, "evid": "5", "type": 4, "value": "9", "from": 0 } }
+// var teamName = "VNG"
 
-function onLoading() {
-    if (window.XLSX) {
-        getRanking(teamInfo, teamName);
-    } else {
-        setTimeout(function() { onLoading() }, 50);
-    }
-}
+// function onLoading() {
+//     if (window.XLSX) {
+//         getRanking(teamInfo, teamName);
+//     } else {
+//         setTimeout(function() { onLoading() }, 50);
+//     }
+// }
 
-onLoading()
+// onLoading()
