@@ -47,7 +47,7 @@ function convertJSONToExcel(data, teamName) {
     var createXLSLFormatObj = [];
 
     /* XLS Head Columns */
-    var xlsHeader = ["act", "ddis", "city", "ctry", "sex", "name", "rank", "diff", "id", "ava", "tmnm", "dis", ];
+    var xlsHeader = ["act", "ddis", "city", "ctry", "gender", "name", "rank", "diff", "id", "ava", "tmnm", "dis", ];
 
     /* XLS Rows Data */
     var xlsRows = data
