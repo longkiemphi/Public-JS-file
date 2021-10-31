@@ -109,23 +109,23 @@ function convertJSONToExcel(data, teamName) {
 
 
 
-function dynamicallyLoadScript(url) {
-    var script = document.createElement("script"); // create a script DOM node
-    script.src = url; // set its src to the provided URL
+// function dynamicallyLoadScript(url) {
+//     var script = document.createElement("script"); // create a script DOM node
+//     script.src = url; // set its src to the provided URL
 
-    document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
-}
-dynamicallyLoadScript("https://cdn.jsdelivr.net/gh/longkiemphi/Public-JS-file@main/syncRanking.js")
+//     document.head.appendChild(script); // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+// }
+// dynamicallyLoadScript("https://cdn.jsdelivr.net/gh/longkiemphi/Public-JS-file@main/syncRanking.js")
 
-var teamInfo = { "trid": "9fe7c7ef-1f67-4439-bbf7-c7d2995828bf", "trtm": 1635489465, "data": { "size": 100, "uid": 191607, "evid": "5", "type": 5, "value": 143, "from": 0 } }
-var teamName = "HR"
+// var teamInfo = { "trid": "9fe7c7ef-1f67-4439-bbf7-c7d2995828bf", "trtm": 1635489465, "data": { "size": 100, "uid": 191607, "evid": "5", "type": 5, "value": 143, "from": 0 } }
+// var teamName = "HR"
 
-function onLoading() {
-    if (window.XLSX) {
-        getRanking(teamInfo, teamName);
-    } else {
-        setTimeout(function() { onLoading() }, 50);
-    }
-}
+// function onLoading() {
+//     if (window.XLSX) {
+//         getRanking(teamInfo, teamName);
+//     } else {
+//         setTimeout(function() { onLoading() }, 50);
+//     }
+// }
 
-onLoading()
+// onLoading()
